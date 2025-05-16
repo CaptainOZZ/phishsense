@@ -11,7 +11,7 @@ document.getElementById('url-form').addEventListener('submit', async (e) => {
   resultDiv.textContent = "Checking...";
 
   try {
-   const response = await fetch('https://phishsense-backend.onrender.com/api/check-url', {
+   const response = await fetch('https://phishsense.onrender.com', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({ url })
