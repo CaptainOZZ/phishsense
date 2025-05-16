@@ -14,7 +14,7 @@ document.getElementById('url-form').addEventListener('submit', async (e) => {
    const response = await fetch('https://phishsense.onrender.com', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ url })
+  body: JSON.stringify({ input })
 });
     const data = await response.json();
     if (data.isUnsafe) {
