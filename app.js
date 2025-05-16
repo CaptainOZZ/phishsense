@@ -11,14 +11,11 @@ document.getElementById('url-form').addEventListener('submit', async (e) => {
   resultDiv.textContent = "Checking...";
 
   try {
-    const response = await fetch('/api/check-url', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ url: input })
-    });
-
+   const response = await fetch('https://phishsense-backend.onrender.com/api/check-url', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ url })
+});
     const data = await response.json();
     if (data.isUnsafe) {
       resultDiv.innerHTML = '<span class="phishing">⚠️ Warning: This URL is unsafe!</span>';
