@@ -8,6 +8,31 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 
+const cors = require("cors");
+
+const allowedOrigins = [
+  "https://captainozz.github.io",
+  "http://localhost:5500",      // add localhost if testing locally
+  "http://localhost:3000"
+];
+
+app.use(cors({
+  origin: function(origin, callback){
+    // allow requests with no origin (like curl, Postman)
+    if(!origin) return callback(null, true);
+
+    if(allowedOrigins.indexOf(origin) === -1){
+      const msg = "The CORS policy for this site does not allow access from the specified Origin.";
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}));
+
+
+
+
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
